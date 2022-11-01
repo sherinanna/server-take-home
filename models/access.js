@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
   var Access = sequelize.define(
     "Access",
     {
-      campaignId: {
-        type: DataTypes.INTEGER,
+      campaignName: {
+        type: DataTypes.string,
         references: {
           model: Campaign,
-          key: "id",
+          key: "campaign_name",
         },
       },
       creatorId: {

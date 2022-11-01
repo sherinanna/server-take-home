@@ -34,15 +34,17 @@ exports.campaigns = async (req, res) => {
 
     // HOW TO CALCULATE AVERAGE PAY PER INSTALL SINCE WE DO NOT HAVE CAMPAIGN ASSOCIATED WITH AN INSTALL
     //  calculate average pay per install for  a creator-campaign combination
-    let price = await db.query(
-      `SELECT * FROM pricing AS p
-      JOIN  access AS a 
-      ON c.id=a.campaign_id
-      JOIN creator AS cr
-      ON a.creator_id=cr.id
-      WHERE p.id = $1`,
-      [creatorId]
-    );
+    // and merge it to the results above as a new column for a campaign
+
+    // let price = await db.query(
+    //   `SELECT * FROM pricing AS p
+    //   JOIN  access AS a
+    //   ON c.id=a.campaign_id
+    //   JOIN creator AS cr
+    //   ON a.creator_id=cr.id
+    //   WHERE p.id = $1`,
+    //   [creatorId]
+    // );
 
     res.send(results.rows);
   } catch (err) {
